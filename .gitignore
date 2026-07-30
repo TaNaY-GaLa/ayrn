@@ -1,0 +1,41 @@
+# Node / Frontend
+node_modules/
+.next/
+out/
+dist/
+.turbo/
+*.tsbuildinfo
+
+# Python / Backend
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+*.pem
+
+# Docker
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Build artifacts
+build/
+*.tsbuildinfo
+
+# Misc
+.cache/
+coverage/
