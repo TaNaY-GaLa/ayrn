@@ -1,145 +1,488 @@
-# AYRN
 
-**Agentic Yielding Reasoning Network**
+AYRN
+Agentic Yielding Reasoning Network
 
-AYRN is an AI operating platform for building, deploying, and coordinating autonomous AI agents — designed as infrastructure for delegated work, not another single-turn chatbot.
+An intelligent operating layer for delegated digital work.
 
-> Status: Pre-alpha. This repository currently contains project documentation and planning artifacts only. No application code has been written yet.
+AYRN is an agentic AI platform designed to turn complex goals into researched, reasoned, verified, and actionable outcomes.
 
----
+Rather than limiting AI to a question-and-answer interface, AYRN is designed around delegation — users define what they want to accomplish, while the platform coordinates the research, planning, knowledge, agents, tools, reasoning, and verification required to work toward the result.
 
-## Table of Contents
+Documentation · Architecture · Roadmap
 
-- [Introduction](#introduction)
-- [Problem Statement](#problem-statement)
-- [Vision](#vision)
-- [Features](#features)
-- [Repository Structure](#repository-structure)
-- [Planned Architecture](#planned-architecture)
-- [Technology Stack](#technology-stack)
-- [Development Status](#development-status)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
+The Idea
 
----
+AI can generate answers. Real-world work often requires much more.
 
-## Introduction
+A meaningful task may involve researching multiple sources, gathering current information, comparing alternatives, using external tools, analyzing results, verifying important facts, and producing a final deliverable.
 
-Most AI products today are built around a single interaction pattern: a person asks a question, a model answers, the context resets. That pattern works well for lookup and drafting tasks. It breaks down for anything that requires sustained effort — multi-step research, long-running workflows, coordination across tools, or work that needs to persist and improve over days or weeks.
+AYRN is designed to bring these capabilities together around a single objective.
 
-AYRN is an attempt to build the layer underneath that: a platform where agents can reason over time, retain and use memory, call tools, hand off work to other agents, and operate under human oversight where it matters.
+                         USER GOAL
+                            |
+                            v
+                       UNDERSTAND
+                            |
+                            v
+                          PLAN
+                            |
+                            v
+                     RESEARCH + RETRIEVE
+                            |
+                            v
+                      AGENTS + TOOLS
+                            |
+                            v
+                     ANALYZE + REASON
+                            |
+                            v
+                         VERIFY
+                            |
+                            v
+                       SYNTHESIZE
+                            |
+                            v
+                         OUTCOME
 
-## Problem Statement
+The goal is simple:
 
-Current AI assistants share a common set of limitations:
+Move from asking AI for answers to delegating work to AI.
 
-- **No durable memory.** Context is lost between sessions, forcing users to re-explain state every time.
-- **Weak long-horizon planning.** Assistants are good at single steps and poor at decomposing and tracking multi-day tasks.
-- **No agent-to-agent coordination.** Every assistant operates in isolation; there is no standard way for specialized agents to collaborate.
-- **Shallow tool use.** Tool calling exists but is rarely composed into reliable, auditable workflows.
-- **Fragmented knowledge.** Information lives across documents, tickets, chats, and databases with no unified retrieval layer.
-- **No continuous improvement loop.** Workflows don't get better with repetition; every run starts from zero.
+A Different AI Experience
 
-These aren't independent gaps — they compound. An assistant that forgets context also can't plan well over multiple sessions, which makes multi-agent coordination pointless, since agents would have nothing durable to hand off to each other. AYRN is scoped to address all of them together, not as a checklist of separate features.
+AYRN is designed to feel less like a chatbot and more like an intelligent workspace.
 
-## Vision
+The user provides an objective.
 
-See [`docs/vision.md`](docs/vision.md) for the full vision document, including mission, principles, and success metrics. Terminology used throughout this repo (agent, task, workflow, workspace) is defined precisely in [`docs/glossary.md`](docs/glossary.md) — worth a skim before the other docs, since these terms are easy to conflate.
+AYRN is designed to determine what needs to happen next, coordinate the capabilities required for the task, and bring the resulting work together into a useful outcome.
 
-In short: AYRN aims to be the operating system for AI agents — the substrate that handles memory, reasoning, tool access, and coordination, so that products built on top of it can focus on delegated outcomes rather than reimplementing agent infrastructure from scratch.
+Traditional AI
 
-## Features
+Question → Model → Answer
 
-### Current (Day 1)
 
-- Project documentation and architectural planning
-- Defined technology stack and repository structure
-- Multi-phase roadmap
+AYRN
 
-### Planned
+Goal
+ ↓
+Understand
+ ↓
+Plan
+ ↓
+Research
+ ↓
+Use Knowledge & Tools
+ ↓
+Coordinate Agents
+ ↓
+Analyze
+ ↓
+Verify
+ ↓
+Outcome
 
-- Multi-agent collaboration and orchestration
-- Persistent, queryable agent memory
-- Long-horizon planning engine
-- Knowledge graph and retrieval-augmented generation (RAG)
-- Vector database integration
-- Tool execution framework with permissioning
-- Third-party API integrations and plugin ecosystem
-- Workflow automation and scheduling
-- Human-in-the-loop approval checkpoints
-- Team workspaces and enterprise deployment
-- Marketplace for reusable agents
-- Agent monitoring and analytics dashboard
-- Cloud and local deployment options
+The complexity of the underlying system should remain behind a simple, intuitive product experience.
 
-## Repository Structure
+What AYRN Is Designed For
+Research
 
-```
-/
-├── README.md
-├── LICENSE
-├── CONTRIBUTING.md
-├── CODE_OF_CONDUCT.md
-├── .gitignore
-├── docs/
-│   ├── vision.md
-│   ├── roadmap.md
-│   ├── architecture.md
-│   ├── requirements.md
-│   ├── tech-stack.md
-│   ├── glossary.md
-│   └── adr/            # Architecture Decision Records
-├── frontend/          # Next.js application (not yet started)
-├── backend/           # FastAPI services (not yet started)
-├── ai/                # Agent engine, reasoning, memory (not yet started)
-├── infrastructure/    # Docker, deployment configs (not yet started)
-├── assets/            # Brand assets, diagrams
-└── .github/           # Issue templates, workflows
-```
+Research information across multiple sources and bring relevant findings together.
 
-## Planned Architecture
+Planning
 
-Full detail is in [`docs/architecture.md`](docs/architecture.md). At a high level, AYRN is planned as five layers: a frontend client, a backend API layer, an AI/agent engine, a memory and knowledge layer, and a tool execution layer — sitting on top of standard data stores and deployment infrastructure.
+Turn broad objectives into structured, actionable plans.
 
-## Technology Stack
+Reasoning
 
-| Layer | Technology |
-|---|---|
-| Frontend | Next.js, React, Tailwind CSS |
-| Backend | FastAPI (Python) |
-| Authentication | Clerk (planned) |
-| Database | PostgreSQL |
-| Vector Database | Qdrant (planned) |
-| AI | OpenAI APIs, Ollama (future, local models) |
-| Deployment | Docker, Vercel, AWS (future) |
-| Version Control | Git + GitHub |
+Analyze information, evaluate alternatives, and determine appropriate next steps.
 
-Rationale, alternatives considered, and trade-offs are documented in [`docs/tech-stack.md`](docs/tech-stack.md).
+Web Intelligence
 
-## Development Status
+Work with current information from the internet when a task requires up-to-date knowledge.
 
-**Day 1.** This repository currently contains planning and documentation only:
+Knowledge
 
-- [x] Vision and problem statement defined
-- [x] Repository structure established
-- [x] Technology stack selected
-- [x] High-level architecture drafted
-- [x] Requirements and user stories documented
-- [x] Multi-phase roadmap defined
-- [ ] Core agent engine (not started)
-- [ ] Memory layer (not started)
-- [ ] Frontend scaffold (not started)
-- [ ] Backend scaffold (not started)
+Combine user-provided information, documents, structured data, knowledge bases, and retrieval systems.
 
-## Roadmap
+Memory
 
-See [`docs/roadmap.md`](docs/roadmap.md) for the full phased roadmap, from research through enterprise readiness.
+Retain relevant context and knowledge so information can remain useful across interactions and workflows.
 
-## Contributing
+Tool Use
 
-AYRN is not yet open for external code contributions — see [`CONTRIBUTING.md`](CONTRIBUTING.md) for what that means today and when it changes. Documentation feedback and architecture discussion via issues is welcome now. This project also follows a [Code of Conduct](CODE_OF_CONDUCT.md).
+Connect AI agents with APIs, databases, external services, and other tools required to complete a task.
 
-## License
+Multi-Agent Work
 
-This project is licensed under the terms of the [LICENSE](LICENSE) file in this repository.
+Coordinate specialized agents so different parts of a complex objective can be handled by the appropriate capability.
+
+Verification
+
+Check important information and intermediate results before producing a final outcome.
+
+Deliverables
+
+Turn completed work into structured results, reports, documents, PDFs, and other useful outputs.
+
+One Platform, Multiple Capabilities
+┌─────────────────────────────────────────────────────────────┐
+│                           AYRN                              │
+│                                                             │
+│  Research     Planning      Reasoning      Analysis         │
+│                                                             │
+│  Knowledge    Memory        Agents         Verification     │
+│                                                             │
+│  Web          Tools         APIs            Documents        │
+│                                                             │
+│                    Actionable Outcomes                      │
+└─────────────────────────────────────────────────────────────┘
+
+AYRN is designed to combine these capabilities rather than treating them as separate products or isolated AI interactions.
+
+The Agent Network
+
+AYRN is envisioned as a network of specialized AI agents.
+
+Instead of expecting one generic agent to handle every responsibility, different agents can specialize in different types of work.
+
+                         AYRN
+                           |
+                  Agent Orchestrator
+                           |
+       +-------------------+-------------------+
+       |                   |                   |
+       v                   v                   v
+   Research            Planning             Analysis
+     Agent               Agent                Agent
+       |                   |                   |
+       +-------------------+-------------------+
+                           |
+              +------------+------------+
+              |                         |
+              v                         v
+        Verification               Document
+           Agent                    Agent
+              |                         |
+              +------------+------------+
+                           |
+                           v
+                        Outcome
+
+Potential agent roles include:
+
+Research Agent
+Planning Agent
+Analysis Agent
+Web Agent
+Coding Agent
+Document Agent
+Data Agent
+Verification Agent
+
+Agent specialization and orchestration are intended to allow AYRN to select the capabilities most appropriate for a particular objective.
+
+Research + Evidence
+
+AYRN is designed to work beyond the information contained within a single model.
+
+Depending on the task, the platform can combine:
+
+Internet information
+Research sources
+User-provided documents
+Structured data
+Knowledge bases
+External services
+APIs
+Vector search
+Persistent knowledge
+Specialized agents
+
+Where appropriate, AYRN is intended to present supporting sources and evidence alongside important results.
+
+The objective is not simply to generate information, but to make the information used to reach an outcome more transparent and easier to evaluate.
+
+Example: Planning a Trip
+
+Consider:
+
+Plan a 7-day trip to Japan for under ₹2,00,000.
+
+AYRN is designed to treat this as a complete objective rather than simply generating an itinerary.
+
+It could coordinate work such as:
+
+Japan Trip
+    |
+    +── Understand budget, dates and preferences
+    |
+    +── Research flights
+    |
+    +── Research accommodation
+    |
+    +── Research destinations
+    |
+    +── Compare prices and options
+    |
+    +── Evaluate trade-offs
+    |
+    +── Build alternative itineraries
+    |
+    +── Verify important information
+    |
+    +── Explain recommendations
+    |
+    +── Produce final itinerary
+    |
+    +── Generate report / PDF
+
+The resulting work could include:
+
+Flight options
+Accommodation options
+Current pricing information
+Destination research
+Activities
+Budget allocation
+Economy and premium alternatives
+Hotel trade-offs
+Supporting sources
+Alternative itineraries
+Recommendations
+A consolidated travel plan
+An exportable report
+
+The same underlying approach can be applied to many other forms of digital work.
+
+Designed for Outcomes
+
+AYRN is built around the idea that the final result should be more useful than a conversational response alone.
+
+Depending on the objective, an outcome could be:
+
+Research
+   ↓
+Analysis
+   ↓
+Comparison
+   ↓
+Recommendation
+   ↓
+Plan
+   ↓
+Document
+   ↓
+Actionable Result
+
+The output is shaped by the task rather than by a fixed chatbot format.
+
+Knowledge, Memory and Context
+
+Complex work often depends on information accumulated over time.
+
+AYRN is designed to provide a knowledge layer that can connect:
+
+                 Knowledge
+                     |
+       +-------------+-------------+
+       |             |             |
+       v             v             v
+   Documents      Memory        Structured Data
+       |             |             |
+       +-------------+-------------+
+                     |
+                     v
+                  Retrieval
+                     |
+                     v
+                   Agents
+
+Potential technologies include retrieval-augmented generation, vector databases, structured databases, and persistent memory.
+
+This allows relevant information to become part of the broader working context instead of being isolated inside individual conversations.
+
+Tools and Integrations
+
+AI agents become significantly more useful when they can interact with systems outside the model itself.
+
+AYRN is designed to provide controlled access to capabilities such as:
+
+Web search
+External APIs
+Databases
+File systems
+Business services
+Data sources
+MCP-compatible tools
+Other external applications
+
+Tool execution is intended to remain separate from the reasoning layer so that actions can be controlled, monitored, and audited.
+
+Human Control
+
+Agentic does not mean uncontrolled.
+
+AYRN is designed to maintain human oversight where it matters.
+
+Users should be able to:
+
+Review plans
+Inspect progress
+Examine important findings
+Approve sensitive actions
+Reject actions
+Modify objectives
+Intervene during execution
+Review final results
+
+The level of human involvement can depend on the nature and risk of the task.
+
+The objective is:
+
+Useful autonomy with appropriate control and transparency.
+
+Product Design Philosophy
+
+AYRN is designed around several principles.
+
+Simple for the user
+
+The user should be able to express an objective naturally without needing to configure the underlying AI system.
+
+Powerful underneath
+
+Complex planning, retrieval, orchestration, tool usage, and verification should happen behind the interface.
+
+Transparent when it matters
+
+Users should be able to understand what the system is doing and where important information came from.
+
+Outcome-oriented
+
+The product should optimize for completing meaningful work, not simply generating longer responses.
+
+Model-independent
+
+AYRN should not depend on one AI model or provider as its permanent foundation.
+
+Human-directed
+
+The system should extend human capability while keeping meaningful decisions under human control.
+
+Long-Term Vision
+
+AYRN is intended to become a destination for intelligent digital work.
+
+The underlying AI ecosystem will continue to change.
+
+New models will emerge. Tools will evolve. Knowledge systems will improve. Agent frameworks will change.
+
+AYRN is therefore not defined by a single model.
+
+Its long-term purpose is to provide the layer that connects:
+
+Users
+  +
+Goals
+  +
+Agents
+  +
+Models
+  +
+Knowledge
+  +
+Memory
+  +
+Research
+  +
+Tools
+  +
+Verification
+  +
+Execution
+  +
+Deliverables
+
+The ambition is for users to think of AYRN not as a place they go only when they have a question, but as a place they go when they have something they want to accomplish.
+
+Architecture
+
+AYRN is designed as a modular agentic platform.
+
+                              USER
+                                |
+                                v
+                         AYRN INTERFACE
+                                |
+                                v
+                           BACKEND API
+                                |
+                                v
+                     AGENT ORCHESTRATION
+                                |
+             +------------------+------------------+
+             |                  |                  |
+             v                  v                  v
+          PLANNING            AGENTS          VERIFICATION
+             |                  |                  |
+             +------------------+------------------+
+                                |
+                +---------------+---------------+
+                |               |               |
+                v               v               v
+             MEMORY         KNOWLEDGE          TOOLS
+                |               |               |
+                v               v               v
+           PostgreSQL         Qdrant        External APIs
+
+The architecture is designed to keep the product interface, orchestration, intelligence, knowledge, memory, and tool execution modular.
+
+See Architecture for the detailed architecture.
+
+Technology
+AreaTechnology
+FrontendNext.js, React, TypeScript, Tailwind CSS
+BackendFastAPI, Python
+AuthenticationClerk
+DatabasePostgreSQL
+Vector DatabaseQdrant
+Local AI RuntimeOllama
+AI ModelsLocal and API-based providers
+Agent OrchestrationLangGraph and related approaches
+Tool IntegrationAPIs, MCP / FastMCP and related interfaces
+DeploymentDocker, Vercel, AWS
+Version ControlGit, GitHub
+Repository
+ayrn/
+├── ai/                  AI and agent systems
+├── backend/             Backend services
+├── frontend/            Product interface
+├── infrastructure/      Deployment and infrastructure
+├── assets/              Product and brand assets
+├── docs/                Product and technical documentation
+└── .github/             Repository configuration
+Documentation
+Vision
+Architecture
+Requirements
+Technology Stack
+Roadmap
+Glossary
+Architecture Decision Records
+Project Status
+
+AYRN is an evolving product and platform.
+
+The architecture, product direction, and foundational systems are being developed toward the broader capabilities described above.
+
+Some capabilities described in this README represent the intended direction of the platform and may not yet be available.
+
+Contributing
+
+Contributions, technical discussions, ideas, and improvements are welcome.
+
+See CONTRIBUTING.md for contribution guidelines.
+
+License
+
+See LICENSE for licensing information.
