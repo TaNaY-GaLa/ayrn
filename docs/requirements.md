@@ -23,7 +23,7 @@
 - **Security:** Tool access must be scoped per-agent and per-workspace; agents must not have broader access than the task requires.
 - **Data privacy:** Memory and knowledge data must be isolated per workspace; no cross-tenant data leakage.
 - **Scalability:** The architecture must support horizontal scaling of the tool execution and agent orchestration layers independently of the API layer.
-- **Portability:** The system must support both cloud and local/on-prem deployment (long-term requirement, not Day 1).
+- **Portability:** The system must support both local and cloud deployment, with local and on-premise operation remaining viable as the platform evolves.
 
 ## User Stories
 
@@ -44,19 +44,19 @@
 
 ## System Constraints
 
-- Initial release depends on third-party APIs (OpenAI) for model inference; local model support (Ollama) is a future enhancement, not Day 1.
+- The initial product direction is local-first model inference through Ollama. Cloud model APIs may be supported as optional providers where appropriate, but the platform should not require a third-party model API for its core operation.
 - Vector database (Qdrant) and authentication (Clerk) are planned dependencies, not yet integrated.
-- No production application code exists yet; this document describes target requirements for phases beyond Day 1.
+- This document defines the target product and system requirements for AYRN as the platform evolves.
 
 ## Assumptions
 
 - Users have a baseline familiarity with delegating tasks (e.g. via project management tools) and will expect similar transparency from AYRN.
 - Initial usage will be single-workspace, single-tenant before multi-tenant enterprise features are prioritized.
-- Network access to third-party model APIs (OpenAI) will be available in all supported deployment environments during early phases.
+- Local model inference should remain possible without dependency on third-party model APIs. Network access may be required for capabilities such as web research, external tools, and optional cloud model providers.
 
 ## Future Enhancements
 
-- Local/offline model execution via Ollama for privacy-sensitive workloads
+
 - Fine-grained, per-tool permission policies configurable by workspace admins
 - Agent performance analytics and cost tracking per task
 - Marketplace monetization for published agents
